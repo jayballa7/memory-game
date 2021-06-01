@@ -1,0 +1,7 @@
+.tiles-div {
+    margin-top: 5%;
+    margin-left: 30%;
+    display: grid;
+    grid-template-columns: 8vw 8vw 8vw 8vw 8vw;
+    grid-template-rows: 17vh 17vh 17vh 17vh;
+}
