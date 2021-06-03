@@ -1,0 +1,10 @@
+exports.donkeykong = require('../../img/donkeykong.jpg');
+exports.diddykong = require('../../img/diddykong.jpg');
+exports.mario = require('../../img/mario.jpg');
+exports.luigi = require('../../img/luigi.jpg');
+exports.yoshi = require('../../img/yoshi.jpg');
+exports.banjo = require('../../img/banjo.jpg');
+exports.pacman = require('../../img/pacman.png');
+exports.zelda = require('../../img/zelda.png');
+exports.link = require('../../img/link.jpg');
+exports.sonic = require('../../img/sonic.jpg');
