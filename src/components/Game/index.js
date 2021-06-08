@@ -1,194 +1,204 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './styles.css';
 import Tile from '../Tile/index.js';
-// import controller from '../../img/controller.png';
-// import donkeykong from '../../img/donkeykong.jpg';
-// import mario from '../../img/mario.jpg';
-// import banjo from '../../img/banjo.jpg';
-// import zelda from '../../img/zelda.png';
-// import diddykong from '../../img/diddykong.jpg';
-// import sonic from '../../img/sonic.jpg';
-// import pacman from '../../img/pacman.png';
-// import luigi from '../../img/luigi.jpg';
-// import yoshi from '../../img/yoshi.jpg';
-// import link from '../../img/link.jpg';
-// import faces from '../../util/faces.json';
-import faces from '../Faces/index.js';
 
-class Game extends Component {
-    
-constructor(props) {
-    super(props);
-    this.state = {
-        faces,
-        Clicked: false
-    };
-};
+function Game () {
 
-    shuffleArray = () => {
-        // Shuffle array of objects
-        const shuffledArr = this.shuffle(this.state.faces);
-        // Setting 'shuffledArr' as the new state
-        this.setState({ shuffledArr });
-    };
-
-      // Function that takes an array as a parameter and shuffles it
-  shuffle = array => {
-    var currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-    return array;
-  };
-    
-
-    handleClick = id => {
-        this.shuffleArray();
-        this.handleScore(id);
-        // console.log(this.state.timesClicked);
-      };
-
-      handleScore = id => {
-        this.state.faces.forEach(element => {
-          if (id === element.id && element.clicked === false) {
-            element.clicked = true;
-            this.setState({ Clicked: false });
-            this.handleIncrement();
-          } else if (id === element.id && element.clicked === true) {
-            if (this.state.currentScore > this.state.highScore) {
-              this.setState({ highScore: this.state.currentScore });
-            }
-            this.setState({ currentScore: 0 });
-            this.setState({ Clicked: true });
-            this.state.faces.forEach(element => (element.clicked = false));
-            console.log(this.state.faces);
-          }
-        });
-      };
-
-
-render() {
-
-    console.log(faces)
-
-    return(
+    return (
         <div className = "game-wrapper">
             <div className = "tiles-div">
-                {this.state.faces.map((keyName, i) => (
-                            <Tile 
-                                Clicked={this.state.Clicked}
-                                handleClick={this.handleClick}
-                                id={keyName.id}
-                                key={i}
-                                image={keyName.image}
-                            />
-                ))}
+                { Array(20).fill(<Tile/>) }
             </div>
         </div>
-    )           
-};
+    )
+}
+
+export default Game;
+
+// import React, {Component} from 'react';
+// import './styles.css';
+// import update from 'immutability-helper';
+// import Tile from '../Tile/index.js';
+// import faces from '../Faces/index.js';
+// import deck from '../Deck/index.js';
+
+// class Game extends Component {
+    
+// constructor(props) {
+
+    
+//     super(props);
+//     this.state = {
+//         highScore: 0,
+//         currentScore: 0,
+//         Clicked: false,
+//     };
+
+//     this.handleClick = this.handleClick.bind(this);
+//     // this.createDeck = this.createDeck.bind(this);
+// };
+
+
+// // createDeck = function() {
+// //     for(var i = 0; i < 20; i++) {
+// //         var obj = {
+// //             "id": i,
+// //             image: isFaceDown ? controller : donkeykong
+// //         };
+// //         deck.push(obj);
+// //     };
+// // };
+
+//     //   updateObjectInArray = (array, action) => {
+//     //     return array.map((item, index) => {
+//     //       if (index !== action.index) {
+//     //         // This isn't the item we care about - keep it as-is
+//     //         return item
+//     //       }
+      
+//     //       // Otherwise, this is the one we want - return an updated value
+//     //       return {
+//     //         ...item,
+//     //         ...action.item
+//     //       }
+//     //     })
+//     //   }
+
+//     //   handleClick = id => {
+//     //     let updatedArr = this.updateObjectInArray(deck);
+//     //     this.setState({ updatedArr });
+//     //   };
+
+
+//         // handleClick = (id) => {
+//         //     var newDeck = this.state.deck[id];
+//         //     var chars = this.state.faces;
+//         //     var updatedDeck = update(newDeck, {$set: chars}); 
+//         //     this.setState({deck: updatedDeck});
+//         // }
+
+//         // handleClick = (id, image) => {
+//         //     var char = this.state.faces;
+//         //     this.setState({
+//         //         deck: this.state.deck.map(el => (el.id === id ? Object.assign({}, el, { image }) : char.image))
+//         //       });
+//         // }
+
+//         // handleUpdate = (todo) => {
+//         //     setTodos({...todos, [todo.id]: todo});
+//         //   }
+
+//         handleClick = (id) => {
+//             this.setState({isFaceDown: false});
+//           }
+
+    
+// //     shuffleArray = () => {
+// //         // Shuffle array of objects
+// //         const shuffledArr = this.shuffle(this.state.deck);
+// //         // Setting 'shuffledArr' as the new state
+// //         this.setState({ shuffledArr });
+// //     };
+
+// //       // handleIncrement increments this.state.currentScore by 1
+// //   handleIncrement = () => {
+// //     // Using setState method to update component's state
+// //     this.setState({ currentScore: this.state.currentScore + 1 });
+// //   };
+
+// //       // Function that takes an array as a parameter and shuffles it
+// //   shuffle = array => {
+// //     var currentIndex = array.length,
+// //       temporaryValue,
+// //       randomIndex;
+
+// //     // While there remain elements to shuffle...
+// //     while (0 !== currentIndex) {
+// //       // Pick a remaining element...
+// //       randomIndex = Math.floor(Math.random() * currentIndex);
+// //       currentIndex -= 1;
+
+// //       // And swap it with the current element.
+// //       temporaryValue = array[currentIndex];
+// //       array[currentIndex] = array[randomIndex];
+// //       array[randomIndex] = temporaryValue;
+// //     }
+// //     return array;
+// //   };
+    
+
+// //     handleClick = id => {
+// //         this.setState(prevState => ({
+        
+// //           faces: prevState.faces.map(
+// //             el => el.id === id? { ...el, image: controller }: el
+// //           )
+        
+// //         }))
+// //       };
+
+//     //   handleScore = id => {
+//     //     this.state.faces.forEach(element => {
+//     //       if (id === element.id && element.clicked === false) {
+//     //         element.clicked = true;
+//     //         this.setState({ Clicked: false });
+//     //         this.handleIncrement();
+//     //       } else if (id === element.id && element.clicked === true) {
+//     //         if (this.state.currentScore > this.state.highScore) {
+//     //           this.setState({ highScore: this.state.currentScore });
+//     //         }
+//     //         this.setState({ currentScore: 0 });
+//     //         this.setState({ Clicked: true });
+//     //         this.state.faces.forEach(element => (element.clicked = false));
+//     //         console.log(this.state.faces);
+//     //       }
+//     //     });
+//     //   };
 
 //     render() {
 
-//         var oneTile = function(key, image) {
-//             this.key = key;
-//             this.image = image;
-//             this.isFaceUp = false;
-//         };
 
-//         oneTile.prototype.draw = function() {
-//             if (this.isFaceUp) {
-//                 return this.image = selected[j];
-//             } else {
-//                 return this.image = controller;
-//             }
-//         };
-
-//         var faces = [
-//             donkeykong,
-//             mario,
-//             banjo,
-//             zelda,
-//             diddykong,
-//             sonic,
-//             pacman,
-//             luigi,
-//             yoshi,
-//             link
-//         ];
-
-//     // Make an array which has 2 of each, then randomize it
-//         var selected = [];
-//             for (var i = 0; i < 10; i++) {
-//             // Randomly pick one from the array of remaining faces
-//             var randomInd = Math.floor(Math.random(faces.length));
-//             var tileImage = faces[randomInd];
-//             // Push 2 copies onto array
-//             selected.push(tileImage);
-//             selected.push(tileImage);
-//             // Remove from array
-//             faces.splice(randomInd, 1);
-//         }
-
-
-// // Now shuffle the elements of that array
-// var shuffleArray = function(array) {
-//     var counter = array.length;
-
-//     // While there are elements in the array
-//     while (counter > 0) {
-//         // Pick a random index
-//         var ind = Math.floor(Math.random() * counter);
-//         // Decrease counter by 1
-//         counter--;
-//         // And swap the last element with it
-//         var temp = array[counter];
-//         array[counter] = array[ind];
-//         array[ind] = temp;
-//     }
-// };
-// shuffleArray(selected);
-
-//         var tiles = [];
-
-//         for(var j = 0; j < 20; j++) {
-//                 var tileKey = j;
-//                 var tileFace = selected;
-//                 tiles.push(new oneTile(tileKey, tileFace));
-//                 tiles[j].draw();
-//         }
-
-
-//     return(
-//         <div className = "game-wrapper">
-//             <div className = "tiles-div">
-//                 {tiles.map((data,index) => {
-//                     return (
-//                         <div className={"tiles-"+ index}>
-//                             <Tile 
-//                                 image = {data.image}
-//                             />
-//                         </div>
-//                     )
-//                 })}
+//         return(
+//             <div className = "game-wrapper">
+//                 <div className = "tiles-div">
+//                     {/* {this.state.deck.map((keyName, i) => ( */}
+//                                 {/* <Tile 
+//                                     // Clicked={this.state.Clicked}
+//                                     handleClick={this.handleClick}
+//                                     // key={i}
+//                                     // image={keyName.image}
+//                                 /> */}
+//                     {numTiles.map(i => {
+//                         return <Tile />
+//                     })}
+//                     {/* ))} */}
+//                 </div>
 //             </div>
-//         </div>
-//     )
-//             }
+//         )           
+//     };
+
+// // render() {
+
+// //     console.log(faces)
+
+// //     return(
+// //         <div className = "game-wrapper">
+// //             <div className = "tiles-div">
+// //                 {this.state.faces.map((keyName, i) => (
+// //                             <Tile 
+// //                                 Clicked={this.state.Clicked}
+// //                                 handleClick={this.handleClick}
+// //                                 id={keyName.id}
+// //                                 key={i}
+// //                                 image={keyName.image}
+// //                             />
+// //                 ))}
+// //             </div>
+// //         </div>
+// //     )           
+// // };
+
 // }
 
-}
 
-
-export default Game;
+// export default Game;
