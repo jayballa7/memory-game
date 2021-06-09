@@ -4,10 +4,17 @@ import Tile from '../Tile/index.js';
 
 function Game () {
 
+    var tileCards = [];
+
+        for(var x = 0; x < 20; x++) {
+            tileCards.push(<Tile key={x} id = {x} />);
+        }
+
+
     return (
         <div className = "game-wrapper">
             <div className = "tiles-div">
-                { Array(20).fill(<Tile/>) }
+                {tileCards}
             </div>
         </div>
     )
