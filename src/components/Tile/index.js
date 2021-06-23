@@ -1,76 +1,64 @@
-// import React, {Component} from 'react';
-
-import React, {useState} from 'react';
-import './styles.css';
-import faces from '../Faces/index.js';
-import controller from '../../img/controller.png';
-// import donkeykong from '../../img/donkeykong.jpg';
-// import mario from '../../img/mario.jpg';
-// import banjo from '../../img/banjo.jpg';
-// import zelda from '../../img/zelda.png';
-// import diddykong from '../../img/diddykong.jpg';
-// import sonic from '../../img/sonic.jpg';
-// import pacman from '../../img/pacman.png';
-// import luigi from '../../img/luigi.jpg';
-// import yoshi from '../../img/yoshi.jpg';
-// import link from '../../img/link.jpg';
-
-// let characters =  [donkeykong, diddykong, mario, luigi, yoshi, banjo, pacman, zelda, link, sonic];
-
-// let characters = faces;
+// import React, {useState} from 'react';
+// import './styles.css';
+// import faces from '../Faces/index.js';
+// import controller from '../../img/controller.png';
 
 
-// let imagesPath = {
-//     up: characters[0],
-//     down: controller
-//   }
-  
-//   class Tile extends Component {
-//     state = {
-//       faceDown: true
+// function Tile(card) {
+
+//     let characters = faces;
+
+//     let index = card.id;
+
+//     let imagesPath = {
+//         up: characters[index],
+//         down: controller
 //     }
-//     toggleImage = () => {
-//       this.setState(state => ({ faceDown: !state.faceDown }))
-//     }
+
+//     // let flippedTiles = [];
+//     // let numMatches;
+
+//     let [faceDown, setFaceDown] = useState(true);
+//     // let [flippedTiles, setFlippedTiles] = useState(0);
+//     // let [isMatch, updateMatch] = useState(false);
+
+//       let cardClick = () => {
+//         setFaceDown(!faceDown);
+//         // console.log(faces[index]);
+//         // if (flippedTiles.length < 2 && faceDown === false) {
+//         //   setFlippedTiles(faces[index]);
+//         //   // console.log(flippedTiles);
+//         // }
+
+//         //   if (flippedTiles.length === 2) {
+//         //       if (flippedTiles[0] === flippedTiles[1]) {
+//         //           flippedTiles[0].isMatch = true;
+//         //           flippedTiles[1].isMatch = true;
+//         //           flippedTiles.length = 0;
+//         //           numMatches++;
+//         //           console.log(numMatches);
+//         //       }
+//         //   }
+        
+//       }
+
+
+
+//     let getImageName = () => faceDown ? 'down' : 'up';
+
+//     const imageName = getImageName();
+    
+
+//       return (
+//         <div>
+//             <div className="tile-wrapper" onClick={cardClick}>
+//                 <img src={imagesPath[imageName]} className = "tile-img" alt = "card" id = {card.id}/>
+//             </div>
+//         </div>
+//       );
+//     };
   
-//     getImageName = () => this.state.faceDown ? 'down' : 'up'
-
-function Tile(card) {
-
-let characters = faces;
-
-let index = card.id;
-
-console.log(index);
-
-let imagesPath = {
-    up: characters[index],
-    down: controller
-  }
-
-  let [faceDown, setFaceDown] = useState(true);
-
-      let toggleImage = () => {
-        setFaceDown(!faceDown);
-    }
-
-    let getImageName = () => faceDown ? 'down' : 'up';
-
-    const imageName = getImageName();
-
-    // render() {
-    //   const imageName = this.getImageName();
-      return (
-        <div>
-            <div className="tile-wrapper">
-                <img src={imagesPath[imageName]} onClick={toggleImage} className = "tile-img" alt = "card" id = {card.id}/>
-            </div>
-        </div>
-      );
-    }
-//   }
-  
-export default Tile;
+// export default Tile;
 
 
 // import { useState } from 'react';
@@ -157,18 +145,22 @@ export default Tile;
 // }
 
 // export default Tile;
-// import React from 'react';
-// import './styles.css';
 
-// function Tile(props) {
-//     return(
-//         <div className="tile-wrapper" onClick={(e) => props.handleClick(e, props.id)}>
-//             <div className="img-div">
-//                 <img src = {props.image} alt = "tile" className = "tile-img"/>
-//             </div>
-//         </div>
-//     )
-// }
+import React from 'react';
+import './styles.css';
 
-// export default Tile;
+function Tile(props) {
+
+    let i = props.id;
+  
+    return(
+        <div className="tile-wrapper">
+            <div className="img-div">
+                <img src = {props.image} onClick={() => props.cardClick(i)} alt = "tile" className = "tile-img"/>
+            </div>
+        </div>
+    )
+}
+
+export default Tile;
 
