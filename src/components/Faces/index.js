@@ -13,7 +13,7 @@ var characters =  [donkeykong, diddykong, mario, luigi, yoshi, banjo, pacman, ze
 
 // Make an array which has 2 of each, then randomize it
 var possibleFaces = characters.slice(0);
-var selected = [];
+var cardImages = [];
 for (var i = 0; i < 10; i++) {
     // Randomly pick one from the array of remaining faces
     var randomInd = Math.floor(Math.random(possibleFaces.length));
@@ -23,8 +23,8 @@ for (var i = 0; i < 10; i++) {
     //     image: character
     // };
     // Push 2 copies onto array
-    selected.push(character);
-    selected.push(character);
+    cardImages.push(character);
+    cardImages.push(character);
     // Remove from array
     possibleFaces.splice(randomInd, 1);
 }
@@ -45,9 +45,9 @@ var shuffleArray = function(array) {
         array[index] = temp;
     }
 };
-shuffleArray(selected);
+shuffleArray(cardImages);
 
-var faces = selected;
+// var faces = cardImages;
 
 // var faces =  [
 //        {
@@ -113,4 +113,4 @@ var faces = selected;
 
 // ]
 
-export default faces;
+export default cardImages;
